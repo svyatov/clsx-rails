@@ -23,7 +23,7 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby_version }}
         bundler-cache: true
-      continue-on-error: ${{ matrix.allow_failures == 'true' }}
+      continue-on-error: ${{ matrix.ruby_version == 'ruby-head' }}
 
     - run: bundle exec rake
-      continue-on-error: ${{ matrix.allow_failures == 'true' }}
+      continue-on-error:  ${{ matrix.ruby_version == 'ruby-head' }}
