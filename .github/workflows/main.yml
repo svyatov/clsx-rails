@@ -19,14 +19,6 @@ jobs:
 
     - run: rm -f Gemfile.lock
 
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-        bundler-cache: true
-    - name: Run the default task
-      run: bundle exec rake
-
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby_version }}
