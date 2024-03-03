@@ -1,0 +1,37 @@
+name: build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Ruby ${{ matrix.ruby }}
+    strategy:
+      matrix:
+        ruby_version: [ruby-head, '3.3', '3.2', '3.1']
+        actionview_version: ['7.1', '7.0', '6.1']
+
+    env:
+      ACTIONVIEW_VERSION: ${{ matrix.actionview_version }}
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - run: rm -f Gemfile.lock
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+    - name: Run the default task
+      run: bundle exec rake
+
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby_version }}
+        bundler-cache: true
+      continue-on-error: ${{ matrix.allow_failures == 'true' }}
+
+    - run: bundle exec rake
+      continue-on-error: ${{ matrix.allow_failures == 'true' }}

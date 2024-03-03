@@ -1,0 +1,37 @@
+AllCops:
+  TargetRubyVersion: 3.1
+  SuggestExtensions: false
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  ExtraDetails: true
+  NewCops: enable
+  Exclude:
+    - benchmark/**/*
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
+
+Style/StringLiteralsInInterpolation:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+Layout/LineLength:
+  Max: 120
+
+Naming/FileName:
+  Exclude:
+    - lib/clsx-rails.rb
+
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - 'test/**/*_test.rb'
+
+Metrics/ClassLength:
+  Exclude:
+    - 'test/**/*_test.rb'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'test/**/*_test.rb'
