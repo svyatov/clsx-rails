@@ -13,6 +13,7 @@ jobs:
 
     env:
       ACTIONVIEW_VERSION: ${{ matrix.actionview_version }}
+      COVERAGE: true
 
     steps:
     - uses: actions/checkout@v4
@@ -27,3 +28,9 @@ jobs:
 
     - run: bundle exec rake
       continue-on-error:  ${{ matrix.ruby_version == 'ruby-head' }}
+
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v4.0.1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        slug: svyatov/clsx-rails

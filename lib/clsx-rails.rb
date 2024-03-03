@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'active_support'
+require 'action_view'
 
 require_relative 'clsx/version'
 require_relative 'clsx/helper'

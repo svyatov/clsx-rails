@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'set'
-require 'action_view'
 
 # :nodoc:
 module Clsx
