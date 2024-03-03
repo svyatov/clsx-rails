@@ -6,6 +6,7 @@ AllCops:
   ExtraDetails: true
   NewCops: enable
   Exclude:
+    - vendor/**/*
     - benchmark/**/*
 
 Style/StringLiterals:

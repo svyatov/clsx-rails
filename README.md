@@ -1,4 +1,4 @@
-# clsx-rails
+# clsx-rails [![CI](https://github.com/svyatov/clsx-rails/workflows/CI/badge.svg)](https://github.com/svyatov/clsx-rails/actions?query=workflow%3ACI) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > A tiny Rails view helper for constructing CSS class strings conditionally.
 
