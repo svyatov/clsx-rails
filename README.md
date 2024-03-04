@@ -6,21 +6,29 @@ This gem is essentially a clone if the [clsx](https://github.com/lukeed/clsx) np
 It provides a simple way to conditionally apply classes to HTML elements in Rails views.
 It is especially useful when you have a lot of conditional classes and you want to keep your views clean and readable.
 
+## Supported Ruby and Rails versions
+
+Ruby 3.1+ and Rails 7.0+ are supported.
+
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add clsx-rails
+```bash
+bundle add clsx-rails
+```
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+Or add it manually to the Gemfile:
 
-    $ gem install clsx-rails
+```ruby
+gem 'clsx-rails', '~> 1.0'
+```
 
 ## Usage
 
-The `clsx` method can be used in views to conditionally apply classes to HTML elements.
+The `clsx` helper method can be used in views to conditionally apply classes to HTML elements.
 You can also use a slightly more conise `cn` alias.
-It accepts a variety of arguments and returns a string of classes.
+It accepts a variety of arguments and returns a string of unique classes.
 
 ```ruby
 # Strings (variadic)
