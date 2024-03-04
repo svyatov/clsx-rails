@@ -1,4 +1,4 @@
-# clsx-rails [![Gem Version](https://img.shields.io/gem/v/clsx-rails)](https://rubygems.org/gems/clsx-rails) ![Codecov](https://img.shields.io/codecov/c/github/svyatov/clsx-rails) [![CI](https://github.com/svyatov/clsx-rails/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/svyatov/clsx-rails/actions?query=workflow%3ACI) [![GitHub License](https://img.shields.io/github/license/svyatov/clsx-rails)](LICENSE.txt)
+# clsx-rails [![Gem Version](https://img.shields.io/gem/v/clsx-rails)](https://rubygems.org/gems/clsx-rails) [![Codecov](https://img.shields.io/codecov/c/github/svyatov/clsx-rails)](https://app.codecov.io/gh/svyatov/clsx-rails) [![CI](https://github.com/svyatov/clsx-rails/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/svyatov/clsx-rails/actions?query=workflow%3ACI) [![GitHub License](https://img.shields.io/github/license/svyatov/clsx-rails)](LICENSE.txt)
 
 > A tiny Rails view helper for constructing CSS class strings conditionally.
 
@@ -150,6 +150,18 @@ git commits and the created tag, and push the `.gem` file to
 There is a simple benchmark script in the `benchmark` directory.
 You can run it with `bundle exec ruby benchmark/run.rb`.
 I've added it for easier performance testing when making changes to the gem.
+
+## Conventional Commits
+
+This project uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit messages.
+
+Types of commits are:
+- `feat`: a new feature
+- `fix`: a bug fix
+- `perf`: code that improves performance
+- `chore`: updating build tasks, configs, formatting etc; no code change
+- `docs`: changes to documentation
+- `refactor`: refactoring code
 
 ## Contributing
 
