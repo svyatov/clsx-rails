@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    clsx-rails (1.0.0)
+    clsx-rails (1.0.1)
       actionview (>= 6.1)
 
 GEM
