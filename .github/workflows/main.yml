@@ -34,3 +34,5 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         slug: svyatov/clsx-rails
+      # Only upload coverage for the latest Ruby and ActionView versions
+      if: ${{ matrix.ruby_version == '3.3' && matrix.actionview_version == '7.1' }
