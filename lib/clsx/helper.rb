@@ -26,7 +26,9 @@ module Clsx
     #   <div class="<%= clsx('foo', active: @is_active, 'another-class' => @condition) %>">
     #   <%= tag.div class: clsx(%w[foo bar], hidden: @condition) do ... end %>
     def clsx(*args)
-      clsx_args_processor(*args).join(' ').presence
+      result = clsx_args_processor(*args)
+      result.uniq!
+      result.join(' ').presence
     end
     alias cn clsx
 
@@ -34,19 +36,22 @@ module Clsx
 
     # @param [Mixed] args
     #
-    # @return [Set]
-    def clsx_args_processor(*args) # rubocop:disable Metrics/CyclomaticComplexity
-      result = Set.new
-      args.flatten!
+    # @return [Array]
+    def clsx_args_processor(*args) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+      result = []
+      complex_keys = []
 
+      args.flatten!
       args.each do |arg|
         next if arg.blank? || arg.is_a?(TrueClass) || arg.is_a?(Proc)
         next result << arg.to_s unless arg.is_a?(Hash)
 
-        arg.each { |k, v| result += clsx_args_processor(k) if v }
+        arg.each { |key, value| complex_keys << key if value }
       end
 
-      result
+      return result if complex_keys.empty?
+
+      result + clsx_args_processor(*complex_keys)
     end
   end
 end

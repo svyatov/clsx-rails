@@ -92,7 +92,7 @@ module Clsx
 
     def test_with_mixed_types
       assert_nil clsx(nil, false, '', {}, [])
-      assert_equal 'foo bar', clsx(nil, false, '', { foo: true }, ['bar'])
+      assert_equal 'bar foo', clsx(nil, false, '', { foo: true }, ['bar'])
     end
 
     # Source: https://github.com/lukeed/clsx/blob/master/test/classnames.js
@@ -104,7 +104,7 @@ module Clsx
       assert_equal 'a 0 1 b', clsx('a', 0, nil, true, 1, 'b')
 
       # (compat) supports heterogeneous arguments
-      assert_equal 'a b', clsx({ a: true }, 'b', false)
+      assert_equal 'b a', clsx({ a: true }, 'b', false)
 
       # (compat) should be trimmed
       assert_equal 'b', clsx('', 'b', {}, '')

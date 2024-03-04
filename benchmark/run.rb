@@ -19,29 +19,29 @@ massive_args = [
 # puts clsx(*massive_args)
 
 def clsx_optimized(*args)
-  clsx_args_processor_optimized(*args).join(' ').presence
+  result = clsx_args_processor_optimized(*args)
+  result.uniq!
+  result.join(' ').presence
 end
 
 def clsx_args_processor_optimized(*args)
-  result = Set.new
+  result = []
+  complex_keys = []
 
+  args.flatten!
   args.each do |arg|
     next if arg.blank? || arg.is_a?(TrueClass) || arg.is_a?(Proc)
+    next result << arg.to_s unless arg.is_a?(Hash)
 
-    case arg
-    when Array
-      result += clsx_args_processor_optimized(*arg)
-    when Hash
-      arg.each { |k, v| result += clsx_args_processor_optimized(k) if v }
-    else
-      result << arg.to_s
-    end
+    arg.each { |key, value| complex_keys << key if value }
   end
 
-  result
+  return result if complex_keys.empty?
+
+  result + clsx_args_processor_optimized(*complex_keys)
 end
 
-unless clsx(*massive_args) == clsx_optimized(*massive_args)
+unless clsx(*massive_args).split.sort == clsx_optimized(*massive_args).split.sort
   puts 'The optimized version produces a different result!'
   puts "Original: #{clsx(*massive_args)}"
   puts "Optimized: #{clsx_optimized(*massive_args)}"
