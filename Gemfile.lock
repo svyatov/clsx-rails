@@ -46,7 +46,7 @@ GEM
     erubi (1.12.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    json (2.7.1)
+    json (2.7.2)
     language_server-protocol (3.17.0.3)
     loofah (2.22.0)
       crass (~> 1.0.2)
@@ -80,7 +80,7 @@ GEM
     rake (13.1.0)
     regexp_parser (2.9.0)
     rexml (3.2.6)
-    rubocop (1.61.0)
+    rubocop (1.63.1)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -88,10 +88,10 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml (>= 3.2.5, < 4.0)
-      rubocop-ast (>= 1.30.0, < 2.0)
+      rubocop-ast (>= 1.31.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.31.1)
+    rubocop-ast (1.31.2)
       parser (>= 3.3.0.4)
     ruby-progressbar (1.13.0)
     simplecov (0.22.0)
@@ -118,7 +118,7 @@ DEPENDENCIES
   clsx-rails!
   minitest (~> 5.22)
   rake (~> 13.0)
-  rubocop (~> 1.21)
+  rubocop (~> 1.63)
   simplecov
   simplecov-cobertura
 
