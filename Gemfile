@@ -17,7 +17,7 @@ end
 gem 'benchmark-ips', '~> 2.13'
 gem 'minitest', '~> 5.22'
 gem 'rake', '~> 13.0'
-gem 'rubocop', '~> 1.21'
+gem 'rubocop', '~> 1.63'
 
 gem 'simplecov', require: false
 gem 'simplecov-cobertura', require: false
