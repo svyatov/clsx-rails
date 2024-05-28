@@ -52,7 +52,7 @@ GEM
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mini_portile2 (2.8.5)
-    minitest (5.22.2)
+    minitest (5.23.1)
     mutex_m (0.2.0)
     nokogiri (1.16.2)
       mini_portile2 (~> 2.8.2)
@@ -116,7 +116,7 @@ DEPENDENCIES
   actionview
   benchmark-ips (~> 2.13)
   clsx-rails!
-  minitest (~> 5.22)
+  minitest (~> 5.23)
   rake (~> 13.0)
   rubocop (~> 1.21)
   simplecov
