@@ -36,3 +36,7 @@ Metrics/ClassLength:
 Metrics/AbcSize:
   Exclude:
     - 'test/**/*_test.rb'
+
+Lint/LiteralAsCondition:
+  Exclude:
+    - 'test/**/*_test.rb'
