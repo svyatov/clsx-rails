@@ -21,7 +21,7 @@ bundle add clsx-rails
 Or add it manually to the Gemfile:
 
 ```ruby
-gem 'clsx-rails', '~> 1.0'
+gem 'clsx-rails', '~> 2.0'
 ```
 
 ## Usage
