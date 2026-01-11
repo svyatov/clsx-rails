@@ -1,55 +1,38 @@
 # frozen_string_literal: true
 
+# Full benchmark comparing optimized vs original implementation
+# Usage: bundle exec ruby benchmark/run.rb
+
 require 'bundler/setup'
 require 'benchmark/ips'
-
 require 'clsx-rails'
 
-include Clsx::Helper # rubocop:disable Style/MixinUsage
+require_relative 'data'
+require_relative 'original'
 
-massive_args = [
-  [[[['a'], 'b']]],
-  { a: 1, b: 2 },
-  [1, 2, 3, 4],
-  { [1, 2, { %w[foo bar] => true }] => true },
-  [{ fuz: 1 }, {}, {}, { baz: 'a' }, { bez: nil, bat: Float::INFINITY }],
-  { { { { { z: true } => true, y: true } => true, { x: 1 } => 2 } => true } => true }
-] # => "a b 1 2 3 4 foo bar fuz baz bat z y x"
+BD = BenchmarkData
+Optimized = Object.new.extend(Clsx::Helper)
+Original = Object.new.extend(ClsxOriginal)
 
-# puts clsx(*massive_args)
+# Verify correctness before benchmarking
+optimized_result = Optimized.clsx(*BD::COMPLEX).split.sort
+original_result = Original.clsx_original(*BD::COMPLEX).split.sort
 
-def clsx_optimized(*args)
-  result = clsx_args_processor_optimized(*args)
-  result.uniq!
-  result.join(' ').presence
-end
-
-def clsx_args_processor_optimized(*args)
-  result = []
-  complex_keys = []
-
-  args.flatten!
-  args.each do |arg|
-    next if arg.blank? || arg.is_a?(TrueClass) || arg.is_a?(Proc)
-    next result << arg.to_s unless arg.is_a?(Hash)
-
-    arg.each { |key, value| complex_keys << key if value }
-  end
-
-  return result if complex_keys.empty?
-
-  result + clsx_args_processor_optimized(*complex_keys)
-end
-
-unless clsx(*massive_args).split.sort == clsx_optimized(*massive_args).split.sort
-  puts 'The optimized version produces a different result!'
-  puts "Original: #{clsx(*massive_args)}"
-  puts "Optimized: #{clsx_optimized(*massive_args)}"
+unless optimized_result == original_result
+  warn 'ERROR: Optimized version produces different result!'
+  warn "Original:  #{original_result.join(' ')}"
+  warn "Optimized: #{optimized_result.join(' ')}"
   exit 1
 end
 
-Benchmark.ips do |x|
-  x.report('original') { clsx(*massive_args) }
-  x.report('optimized') { clsx_optimized(*massive_args) }
-  x.compare!
+puts "clsx-rails Benchmark (Ruby #{RUBY_VERSION})"
+puts '=' * 60
+
+BD::BENCHMARKS.each do |name, args|
+  puts
+  Benchmark.ips do |x|
+    x.report("#{name} (original)") { Original.clsx_original(*args) }
+    x.report("#{name} (optimized)") { Optimized.clsx(*args) }
+    x.compare!
+  end
 end

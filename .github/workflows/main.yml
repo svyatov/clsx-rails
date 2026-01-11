@@ -7,9 +7,18 @@ jobs:
     runs-on: ubuntu-latest
     name: Ruby ${{ matrix.ruby_version }} / ActionView ${{ matrix.actionview_version }}
     strategy:
+      fail-fast: false
       matrix:
-        ruby_version: [ruby-head, '3.3', '3.2', '3.1']
-        actionview_version: ['7.1', '7.0', '6.1']
+        ruby_version: [ruby-head, '3.4', '3.3', '3.2', '3.1']
+        actionview_version: ['edge', '8.1', '8.0', '7.2', '7.1']
+        exclude:
+          # Rails 8.0+ requires Ruby 3.2+
+          - ruby_version: '3.1'
+            actionview_version: 'edge'
+          - ruby_version: '3.1'
+            actionview_version: '8.1'
+          - ruby_version: '3.1'
+            actionview_version: '8.0'
 
     env:
       ACTIONVIEW_VERSION: ${{ matrix.actionview_version }}
@@ -24,15 +33,15 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby_version }}
         bundler-cache: true
-      continue-on-error: ${{ matrix.ruby_version == 'ruby-head' }}
+      continue-on-error: ${{ matrix.ruby_version == 'ruby-head' || matrix.actionview_version == 'edge' }}
 
     - run: bundle exec rake
-      continue-on-error:  ${{ matrix.ruby_version == 'ruby-head' }}
+      continue-on-error: ${{ matrix.ruby_version == 'ruby-head' || matrix.actionview_version == 'edge' }}
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v4.0.1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         slug: svyatov/clsx-rails
-      # Only upload coverage for the latest Ruby and ActionView versions
-      if: ${{ matrix.ruby_version == '3.3' && matrix.actionview_version == '7.1' }}
+      # Only upload coverage for the latest stable Ruby and ActionView versions
+      if: ${{ matrix.ruby_version == '3.4' && matrix.actionview_version == '8.1' }}
