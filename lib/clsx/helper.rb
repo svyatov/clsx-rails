@@ -24,6 +24,10 @@ module Clsx
     #   <div class="<%= clsx('foo', 'bar') %>">
     #   <div class="<%= clsx('foo', active: @is_active, 'another-class' => @condition) %>">
     #   <%= tag.div class: clsx(%w[foo bar], hidden: @condition) do ... end %>
+    #
+    # @note Implementation prioritizes performance over readability.
+    #   Direct class comparisons and explicit conditionals are used
+    #   instead of more idiomatic Ruby patterns for speed.
 
     # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
     def clsx(*args)
@@ -33,6 +37,7 @@ module Clsx
       if args.size == 1
         arg = args[0]
         klass = arg.class
+
         if klass == String
           return arg.empty? ? nil : arg
         elsif klass == Symbol
@@ -65,6 +70,7 @@ module Clsx
         next unless value
 
         klass = key.class
+
         if klass == Symbol
           seen[key.name] = true
         elsif klass == String
@@ -76,6 +82,7 @@ module Clsx
           return seen.empty? ? nil : seen.keys.join(' ')
         end
       end
+
       seen.empty? ? nil : seen.keys.join(' ')
     end
 
