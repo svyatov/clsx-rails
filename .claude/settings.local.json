@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(gem --version:*)",
-      "Bash(bundler:*)"
-    ]
-  }
-}
