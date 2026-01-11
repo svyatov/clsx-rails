@@ -17,7 +17,7 @@ else
 end
 
 gem 'benchmark-ips', '~> 2.14'
-gem 'minitest', '~> 5.26'
+gem 'minitest', '~> 6.0'
 gem 'rake', '~> 13.2'
 gem 'rubocop', '~> 1.81'
 
