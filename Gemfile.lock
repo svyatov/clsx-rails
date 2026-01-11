@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    clsx-rails (1.0.1)
+    clsx-rails (2.0.0)
       actionview (>= 7.1)
 
 GEM
@@ -136,4 +136,4 @@ DEPENDENCIES
   simplecov-cobertura
 
 BUNDLED WITH
-   2.5.6
+  4.0.3

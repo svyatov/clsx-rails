@@ -8,7 +8,7 @@ It is especially useful when you have a lot of conditional classes and you want 
 
 ## Supported Ruby and Rails versions
 
-Ruby 3.1+ and Rails 7.0+ are supported.
+Ruby 3.1+ and Rails 7.1+ are supported.
 
 ## Installation
 

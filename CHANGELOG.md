@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## Unreleased changes
 
+## v2.0.0 (2025-01-11)
+
+### Breaking Changes
+- Drop Rails 6.1 and 7.0 support, require Rails 7.1+
+
+### Features
+- Add Ruby 3.4 support
+- Add Rails 8.0, 8.1, and edge support
+
+### Performance Improvements
+- Rewrite algorithm for 2-5x performance improvement
+- Add fast-paths for single string, string array, and simple hash
+- Use Hash-based deduplication instead of Array + `uniq!`
+- Use `Symbol#name` instead of `to_s` for faster symbol conversion
+- Use direct class comparison for type checking
+- Remove unused `require 'set'`
+
+### Chore
+- Refactor benchmark infrastructure (data.rb, original.rb, quick.rb, run.rb)
+- Add CLAUDE.md for AI coding assistants
+
 ## v1.0.1 (2024-03-04)
 
 ### Performance Improvements
