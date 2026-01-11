@@ -17,7 +17,11 @@ else
 end
 
 gem 'benchmark-ips', '~> 2.14'
-gem 'minitest', '~> 6.0'
+if RUBY_VERSION >= '3.2'
+  gem 'minitest', '~> 6.0'
+else
+  gem 'minitest', '~> 5.25'
+end
 gem 'rake', '~> 13.2'
 gem 'rubocop', '~> 1.81'
 
