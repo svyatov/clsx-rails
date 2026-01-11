@@ -95,6 +95,60 @@ module Clsx
       assert_equal 'bar foo', clsx(nil, false, '', { foo: true }, ['bar'])
     end
 
+    def test_with_no_arguments
+      assert_nil clsx
+    end
+
+    def test_with_single_symbol
+      assert_equal 'foo', clsx(:foo)
+      assert_equal 'foo-bar', clsx(:'foo-bar')
+    end
+
+    def test_with_single_array_duplicates_and_empty
+      # Tests the fast path for single array of strings with duplicates and empty strings
+      assert_equal 'foo bar', clsx(%w[foo bar foo])
+      assert_equal 'foo bar', clsx(['foo', '', 'bar', ''])
+      assert_equal 'foo', clsx(['foo', '', 'foo'])
+    end
+
+    def test_with_string_keys_in_hash
+      assert_equal 'foo', clsx('foo' => true)
+      assert_equal 'foo bar', clsx('foo' => true, 'bar' => 1)
+      assert_equal 'foo', clsx('foo' => true, 'bar' => false)
+      # Empty string key should be filtered out
+      assert_nil clsx('' => true)
+      assert_equal 'foo', clsx('' => true, 'foo' => true)
+    end
+
+    def test_with_single_hash_all_falsy
+      assert_nil clsx(foo: false)
+      assert_nil clsx(foo: nil, bar: false)
+      assert_nil clsx('foo' => false)
+    end
+
+    def test_with_complex_key_in_single_hash
+      # Complex key that evaluates to empty
+      assert_nil clsx({ [''] => true })
+      assert_nil clsx({ [[[]]] => true })
+      # Complex key with valid content
+      assert_equal 'foo', clsx({ %w[foo] => true })
+    end
+
+    def test_with_custom_objects
+      obj = Object.new
+      def obj.to_s = 'custom-class'
+
+      assert_equal 'custom-class', clsx([obj])
+      assert_equal 'foo custom-class', clsx('foo', [obj])
+
+      # Object with empty to_s should be filtered
+      empty_obj = Object.new
+      def empty_obj.to_s = ''
+
+      assert_nil clsx([empty_obj])
+      assert_equal 'foo', clsx('foo', [empty_obj])
+    end
+
     # Source: https://github.com/lukeed/clsx/blob/master/test/classnames.js
     def test_compatiblity_with_classnames
       # (compat) keeps object keys with truthy values

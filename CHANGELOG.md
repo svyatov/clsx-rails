@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## Unreleased changes
 
+### Tests
+- Improve test coverage to 100% line and 100% branch coverage
+
 ## v2.0.0 (2025-01-11)
 
 ### Breaking Changes
