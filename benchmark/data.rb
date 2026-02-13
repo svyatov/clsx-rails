@@ -11,6 +11,9 @@ module BenchmarkData
   # Simple hash with symbol keys - e.g., { active: true, disabled: false }
   HASH = { foo: true, bar: false, baz: 1 }.freeze
 
+  # String + hash - most common real-world Rails pattern
+  STRING_HASH = ['btn btn-primary', { active: true, disabled: false }].freeze
+
   # Mixed types - strings, hashes, arrays combined
   MIXED = ['base', { active: true, disabled: false }, %w[extra classes]].freeze
 
@@ -30,6 +33,7 @@ module BenchmarkData
     'string array' => [STRINGS],          # clsx(%w[...])
     'multiple strings' => STRINGS,        # clsx('btn', 'btn-primary', ...)
     'hash' => [HASH],                      # clsx({ foo: true, ... })
+    'string + hash' => STRING_HASH,        # clsx('btn btn-primary', { active: true, ... })
     'mixed' => MIXED,                      # clsx('base', { active: true }, ...)
     'complex' => COMPLEX                   # clsx(nested, structures, ...)
   }.freeze

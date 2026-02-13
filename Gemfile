@@ -6,7 +6,7 @@ source 'https://rubygems.org'
 gemspec
 
 # Specify your gem's development dependencies below
-gem 'actionpack', '>= 6.1'
+gem 'actionpack', '>= 7.2'
 
 if ENV['ACTIONVIEW_VERSION'] == 'edge'
   gem 'actionview', github: 'rails/rails', glob: 'actionview/*.gemspec'
@@ -17,11 +17,7 @@ else
 end
 
 gem 'benchmark-ips', '~> 2.14'
-if RUBY_VERSION >= '3.2'
-  gem 'minitest', '~> 6.0'
-else
-  gem 'minitest', '~> 5.25'
-end
+gem 'minitest', '~> 6.0'
 gem 'rake', '~> 13.2'
 gem 'rubocop', '~> 1.81'
 
