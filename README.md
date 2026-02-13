@@ -2,7 +2,7 @@
 
 > Rails view helper for constructing CSS class strings conditionally. Powered by [clsx-ruby](https://github.com/svyatov/clsx-ruby).
 
-Automatically adds `clsx` and `cn` helpers to all Rails views. A faster, smarter alternative to Rails `class_names` / `token_list`.
+Automatically adds `clsx` and `cn` helpers to all Rails views. The fastest alternative to Rails `class_names`.
 
 ## Quick Start
 
