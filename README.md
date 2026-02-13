@@ -196,9 +196,9 @@ Ruby 3.2+ and Rails 7.2+.
 ## Development
 
 ```bash
-bin/setup                            # install dependencies
-bundle exec rake test                # run tests
-bundle exec ruby benchmark/run.rb   # run benchmarks
+bin/setup                          # install dependencies
+bundle exec rake test              # run tests
+bundle exec ruby benchmark/run.rb  # run benchmarks
 ```
 
 ## Contributing
