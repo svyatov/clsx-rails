@@ -8,8 +8,10 @@ Gem::Specification.new do |spec|
   spec.authors = ['Leonid Svyatov']
   spec.email = ['leonid@svyatov.com']
 
-  spec.summary = 'Rails view helper integration for clsx-ruby'
-  spec.description = 'Adds clsx and cn helpers to all Rails views for constructing CSS class strings conditionally'
+  spec.summary = 'The fastest conditional CSS class builder for Rails'
+  spec.description = 'Build CSS class strings from conditional expressions, hashes, arrays, or nested structures. ' \
+                     '3-8x faster drop-in replacement for Rails class_names. ' \
+                     'Supports ViewComponent, Phlex, and Tailwind CSS.'
   spec.homepage = 'https://github.com/svyatov/clsx-rails'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 3.2.0'

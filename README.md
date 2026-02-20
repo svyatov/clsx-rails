@@ -1,8 +1,9 @@
 # clsx-rails [![Gem Version](https://img.shields.io/gem/v/clsx-rails)](https://rubygems.org/gems/clsx-rails) [![Codecov](https://img.shields.io/codecov/c/github/svyatov/clsx-rails)](https://app.codecov.io/gh/svyatov/clsx-rails) [![CI](https://github.com/svyatov/clsx-rails/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/svyatov/clsx-rails/actions?query=workflow%3ACI) [![GitHub License](https://img.shields.io/github/license/svyatov/clsx-rails)](LICENSE.txt)
 
-> Rails view helper for constructing CSS class strings conditionally. Powered by [clsx-ruby](https://github.com/svyatov/clsx-ruby).
+> The fastest conditional CSS class builder for Rails — 3-8x faster drop-in replacement for `class_names`.
+> Powered by [clsx-ruby](https://github.com/svyatov/clsx-ruby).
 
-Automatically adds `clsx` and `cn` helpers to all Rails views. The fastest alternative to Rails `class_names`.
+Adds `clsx` and `cn` helpers to all views automatically.
 
 ## Quick Start
 
