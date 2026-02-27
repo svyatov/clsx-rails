@@ -1,6 +1,6 @@
 # clsx-rails [![Gem Version](https://img.shields.io/gem/v/clsx-rails)](https://rubygems.org/gems/clsx-rails) [![Codecov](https://img.shields.io/codecov/c/github/svyatov/clsx-rails)](https://app.codecov.io/gh/svyatov/clsx-rails) [![CI](https://github.com/svyatov/clsx-rails/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/svyatov/clsx-rails/actions?query=workflow%3ACI) [![GitHub License](https://img.shields.io/github/license/svyatov/clsx-rails)](LICENSE.txt)
 
-> The fastest conditional CSS class builder for Rails — 3-8x faster drop-in replacement for `class_names`.
+> The fastest conditional CSS class builder for Rails — 2-4x faster drop-in replacement for `class_names`.
 > Powered by [clsx-ruby](https://github.com/svyatov/clsx-ruby).
 
 Adds `clsx` and `cn` helpers to all views automatically.
@@ -29,16 +29,16 @@ That's it — `clsx` and `cn` are now available in all your views:
 
 ### Faster
 
-**3-8x faster** than Rails `class_names` across every scenario:
+**2-4x faster** than Rails `class_names` across every scenario:
 
 | Scenario | clsx | Rails `class_names` | Speedup |
 |---|---|---|---|
-| Single string | 7.6M i/s | 911K i/s | **8.5x** |
-| String + hash | 2.4M i/s | 580K i/s | **4.1x** |
-| String array | 1.4M i/s | 357K i/s | **4.0x** |
-| Multiple strings | 1.5M i/s | 414K i/s | **3.7x** |
-| Hash | 2.2M i/s | 670K i/s | **3.3x** |
-| Mixed types | 852K i/s | 367K i/s | **2.3x** |
+| String array | 1.2M i/s | 317K i/s | **3.9x** |
+| Multiple strings | 1.3M i/s | 346K i/s | **3.8x** |
+| Single string | 2.3M i/s | 812K i/s | **2.9x** |
+| Mixed types | 901K i/s | 331K i/s | **2.7x** |
+| Hash | 1.7M i/s | 684K i/s | **2.4x** |
+| String + hash | 1.2M i/s | 550K i/s | **2.1x** |
 
 <sup>Ruby 4.0.1, Apple M1 Pro. Reproduce: `bundle exec ruby benchmark/run.rb`</sup>
 
@@ -48,7 +48,7 @@ That's it — `clsx` and `cn` are now available in all your views:
 |---|---|---|
 | Conditional classes | yes | yes |
 | Auto-deduplication | yes | yes |
-| 3-8x faster | yes | no |
+| 2-4x faster | yes | no |
 | Returns `nil` when empty | yes | no (returns `""`) |
 | Complex hash keys | yes | no |
 | Short `cn` alias | yes | no |

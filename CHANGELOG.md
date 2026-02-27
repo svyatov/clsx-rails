@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## Unreleased
 
+## v3.0.1 (2026-02-27)
+
+### Changed
+- Require clsx-ruby >= 1.1.3 for correct deduplication behavior
+- Updated benchmark numbers to reflect current performance (2-4x faster)
+
 ## v3.0.0 (2026-02-13)
 
 ### Added

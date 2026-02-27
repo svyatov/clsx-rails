@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary = 'The fastest conditional CSS class builder for Rails'
   spec.description = 'Build CSS class strings from conditional expressions, hashes, arrays, or nested structures. ' \
-                     '3-8x faster drop-in replacement for Rails class_names. ' \
+                     '2-4x faster drop-in replacement for Rails class_names. ' \
                      'Supports ViewComponent, Phlex, and Tailwind CSS.'
   spec.homepage = 'https://github.com/svyatov/clsx-rails'
   spec.license = 'MIT'
@@ -26,5 +26,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'actionview', '>= 7.2'
-  spec.add_dependency 'clsx-ruby', '~> 1.1'
+  spec.add_dependency 'clsx-ruby', '~> 1.1', '>= 1.1.3'
 end
