@@ -26,5 +26,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'actionview', '>= 7.2'
-  spec.add_dependency 'clsx-ruby', '~> 1.1', '>= 1.1.3'
+  spec.add_dependency 'clsx-ruby', '~> 1.2'
 end

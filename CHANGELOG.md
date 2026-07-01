@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## Unreleased
 
+## v3.1.0 (2026-07-01)
+
+### Added
+- `twm` Tailwind class-merge helper, available in all views via clsx-ruby 1.2.0's optional `tailwind_merge` integration (opt-in: `require 'clsx/tailwind_merge'` + `Clsx.merger =`)
+
+### Changed
+- Require clsx-ruby `~> 1.2` (was `~> 1.1, >= 1.1.3`); picks up faster single-string and hash paths
+
 ## v3.0.1 (2026-02-27)
 
 ### Changed

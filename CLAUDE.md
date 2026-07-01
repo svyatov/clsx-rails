@@ -43,7 +43,7 @@ The gem has a minimal structure:
 - `lib/clsx-rails.rb` - Entry point: requires clsx-ruby, auto-includes `Clsx::Helper` into ActionView
 - `lib/clsx/rails/version.rb` - Version constant (`Clsx::Rails::VERSION`)
 
-The core `clsx`/`cn` methods come from `Clsx::Helper` in the clsx-ruby gem.
+The core `clsx`/`cn` methods come from `Clsx::Helper` in the clsx-ruby gem (requires `~> 1.2`).
 
 ## Key Behaviors
 
@@ -52,6 +52,7 @@ The core `clsx`/`cn` methods come from `Clsx::Helper` in the clsx-ruby gem.
 - Ruby falsy values are only `false` and `nil` (unlike JS, `0`, `''`, `[]`, `{}` are truthy)
 - Ignores `Proc`/lambda objects and boolean `true` values
 - Supports complex hash keys like `{ %w[foo bar] => true }` which resolve recursively
+- `twm` (Tailwind class merge) is opt-in via clsx-ruby's `require 'clsx/tailwind_merge'` + `Clsx.merger =` (needs the `tailwind_merge` gem); once loaded it's auto-available in views alongside `clsx`/`cn`
 
 ## Benchmarking
 

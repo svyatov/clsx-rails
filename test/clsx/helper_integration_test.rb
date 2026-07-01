@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'test_helper'
+require 'clsx/tailwind_merge'
 
 module Clsx
   class HelperIntegrationTest < ActionView::TestCase
@@ -32,6 +33,14 @@ module Clsx
     def test_clsx_return_leaves_empty_class_when_used_with_erb
       expected = %(<div class=""></div>)
       actual = render_erb %(<div class="<%= clsx('') %>"></div>)
+
+      assert_dom_equal expected, actual
+    end
+
+    def test_twm_merges_tailwind_classes_in_views
+      Clsx.merger = TailwindMerge::Merger.new
+      expected = %(<div class="px-4"></div>)
+      actual = tag.div class: twm('px-2 px-4')
 
       assert_dom_equal expected, actual
     end
