@@ -16,10 +16,10 @@ else
   gem 'actionview'
 end
 
-gem 'benchmark-ips', '~> 2.14'
+gem 'benchmark-ips', '~> 2.15'
 gem 'minitest', '~> 6.0'
-gem 'rake', '~> 13.2'
-gem 'rubocop', '~> 1.81'
+gem 'rake', '~> 13.4'
+gem 'rubocop', '~> 1.88'
 gem 'tailwind_merge'
 
 gem 'simplecov', require: false

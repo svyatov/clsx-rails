@@ -23,7 +23,7 @@ jobs:
       COVERAGE: true
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - run: rm -f Gemfile.lock
 
@@ -37,7 +37,7 @@ jobs:
       continue-on-error: ${{ matrix.ruby_version == 'ruby-head' || matrix.actionview_version == 'edge' }}
 
     - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v5
+      uses: codecov/codecov-action@v7
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         slug: svyatov/clsx-rails
